@@ -17,4 +17,4 @@ The codebase is structured to ensure modularity and maintainability, leveraging 
 
 ## Additional Resources
 
-For more detailed documentation and guides, please refer to the [Wiki](wiki.md).
+For more detailed documentation and guides, please refer to the [Wiki](res://docu/wiki.md).
