@@ -1,7 +1,7 @@
-```
+
 > **Disclaimer**: All comments in this document were written by GitHub Copilot.
-```
-```
+
+
 ## Project Summary
 
 This project is built using GDScript, the scripting language for the Godot Engine. It includes the following key components:
@@ -13,10 +13,8 @@ This project is built using GDScript, the scripting language for the Godot Engin
 - **Utilities**: Helper scripts provide reusable functionality for tasks like data management and debugging.
 
 The codebase is structured to ensure modularity and maintainability, leveraging Godot's node-based architecture.
-```
 
-```
+
 ## Additional Resources
 
 For more detailed documentation and guides, please refer to the [Wiki](wiki.md).
-```
