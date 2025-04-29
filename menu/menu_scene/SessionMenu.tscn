@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=3 uid="uid://vxmknu37gahw"]
+
+[ext_resource type="Script" uid="uid://bxms06hosj8wq" path="res://menu/menu_script/Session_Menu.gd" id="1_1tbt3"]
+[ext_resource type="Theme" uid="uid://7eowniw3q8f" path="res://menu/themes/Main_Menu.tres" id="1_qe16r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4hi8v"]
+font_size = 54
+
+[sub_resource type="LabelSettings" id="LabelSettings_at5qg"]
+font_size = 54
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_1tbt3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -661.5
+offset_top = -290.0
+offset_right = 661.5
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.835294, 0.737255, 0.345098, 0.784314)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -656.0
+offset_top = -285.5
+offset_right = 656.0
+offset_bottom = 285.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerCountContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerCountLabel" type="Label" parent="VBoxContainer/PlayerCountContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_qe16r")
+text = " Player Count:"
+label_settings = SubResource("LabelSettings_4hi8v")
+
+[node name="PlayerCountInput" type="SpinBox" parent="VBoxContainer/PlayerCountContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_qe16r")
+min_value = 8.0
+max_value = 28.0
+value = 8.0
+alignment = 1
+
+[node name="PlayerNameContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/PlayerNameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_qe16r")
+text = " Enter Display Name:"
+label_settings = SubResource("LabelSettings_at5qg")
+
+[node name="PlayerNameInput" type="LineEdit" parent="VBoxContainer/PlayerNameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_qe16r")
+alignment = 1
+max_length = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player 1"
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_qe16r")
+text = "Start Game"
+
+[connection signal="focus_entered" from="VBoxContainer/PlayerNameContainer/PlayerNameInput" to="." method="_on_player_name_input_focus_entered"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

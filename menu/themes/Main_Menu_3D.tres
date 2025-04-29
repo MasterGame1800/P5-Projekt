@@ -1,0 +1,15 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://df84dfa2pm68y"]
+
+[ext_resource type="Material" uid="uid://c654o1xeqltlk" path="res://menu/themes/Sky.tres" id="1_g3u5w"]
+
+[sub_resource type="Sky" id="Sky_ttcvl"]
+sky_material = ExtResource("1_g3u5w")
+process_mode = 3
+radiance_size = 1
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_ttcvl")
+fog_light_energy = 0.23
+fog_sun_scatter = 1.0
+fog_density = 0.0031

@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dct5ucbxutsam"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_go1m2"]
+bg_color = Color(0.385528, 0.288113, 0.134377, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.282353, 0.188235, 0.0627451, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vui40"]
+bg_color = Color(0.330246, 0.247471, 0.109369, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.272661, 0.180395, 0.0608714, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e072n"]
+bg_color = Color(0.438244, 0.31107, 0.180117, 1)
+
+[resource]
+Button/font_sizes/font_size = 16
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = SubResource("StyleBoxFlat_go1m2")
+Button/styles/pressed = null
+LineEdit/styles/normal = SubResource("StyleBoxFlat_vui40")
+Panel/styles/panel = SubResource("StyleBoxFlat_e072n")

@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtfdv5vrtdokd"]
+
+[ext_resource type="Theme" uid="uid://7eowniw3q8f" path="res://menu/themes/Main_Menu.tres" id="2_0h7iq"]
+[ext_resource type="Script" uid="uid://c738mi6n8bnuf" path="res://menu/menu_script/main_menu.gd" id="2_nwyx8"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 512.0
+offset_bottom = 385.0
+theme = ExtResource("2_0h7iq")
+script = ExtResource("2_nwyx8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 384.0
+color = Color(0.439216, 0.309804, 0.180392, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.0
+offset_top = -160.0
+offset_right = 223.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0h7iq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button Host" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme = ExtResource("2_0h7iq")
+text = "Host Game"
+
+[node name="Button Join" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = ExtResource("2_0h7iq")
+text = "Join Game"
+
+[node name="CodeInput" type="LineEdit" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+placeholder_text = "Enter Lobby ID"
+alignment = 1
+max_length = 10
+
+[connection signal="pressed" from="Panel/VBoxContainer/Button Host" to="." method="_on_button_host_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button Join" to="." method="_on_button_join_pressed"]

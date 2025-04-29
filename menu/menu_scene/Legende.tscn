@@ -1,0 +1,458 @@
+[gd_scene load_steps=21 format=3 uid="uid://ciy1lbtx65o54"]
+
+[ext_resource type="Script" uid="uid://b0wv313b4gt2u" path="res://menu/menu_script/legende_menu.gd" id="1_4sp3v"]
+[ext_resource type="Texture2D" uid="uid://dl523otl6p84y" path="res://assets/cards/Armor.png" id="2_pfkek"]
+[ext_resource type="Texture2D" uid="uid://1wlp1c32pen7" path="res://assets/cards/Witch.png" id="3_dkk35"]
+[ext_resource type="Texture2D" uid="uid://dr6su5mwa2f3n" path="res://assets/cards/Seeress.png" id="4_jfic3"]
+[ext_resource type="Texture2D" uid="uid://bfxqleft3fd7" path="res://assets/cards/Hunter.png" id="5_oafhn"]
+[ext_resource type="Texture2D" uid="uid://dicbt7wnpxxkq" path="res://assets/cards/Girl.png" id="6_n8qk5"]
+[ext_resource type="Texture2D" uid="uid://b4ncqfjeinfjl" path="res://assets/cards/GuardianAngel.png" id="7_w02tg"]
+[ext_resource type="Texture2D" uid="uid://bfj0urc37g6sn" path="res://assets/cards/Sisters.png" id="8_a8uh1"]
+[ext_resource type="Texture2D" uid="uid://dc7eyvvrl60fd" path="res://assets/cards/Bear.png" id="9_8qapr"]
+[ext_resource type="Texture2D" uid="uid://dlict84m2irap" path="res://assets/cards/Knight.png" id="10_c173q"]
+[ext_resource type="Texture2D" uid="uid://cuio80f5y53ax" path="res://assets/cards/Fox.png" id="11_2wkgl"]
+[ext_resource type="Texture2D" uid="uid://sgx5nbg3fnsq" path="res://assets/cards/Tree.png" id="12_2j2wn"]
+[ext_resource type="Texture2D" uid="uid://cvmqog7mmcocr" path="res://assets/cards/Villager.png" id="13_772kk"]
+[ext_resource type="Texture2D" uid="uid://brb2bu8j53syq" path="res://assets/cards/Wolf.png" id="14_k2wsm"]
+[ext_resource type="Texture2D" uid="uid://d0j5yp0ggvm5k" path="res://assets/cards/BigWolf.png" id="15_jxqi3"]
+[ext_resource type="Texture2D" uid="uid://brdjgab8a78ct" path="res://assets/cards/Urwolf.png" id="16_1qgmf"]
+[ext_resource type="Texture2D" uid="uid://by77t1b47xr5m" path="res://assets/cards/Flute.png" id="17_a8vfl"]
+[ext_resource type="Texture2D" uid="uid://dys4yvbfm222j" path="res://assets/cards/WhiteWolf.png" id="18_g4bjw"]
+[ext_resource type="Texture2D" uid="uid://fvj05ppejb50" path="res://assets/cards/WolfChild.png" id="19_pfkek"]
+[ext_resource type="Texture2D" uid="uid://bqfe7u57eisn" path="res://assets/cards/Child.png" id="20_dkk35"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_4sp3v")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 135.0
+offset_top = 74.0
+offset_right = -207.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Head" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Legende der Charaktere"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Prefix" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Suche nach einer Rolle:"
+
+[node name="searchbar" type="LineEdit" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Suche"
+emoji_menu_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Intro" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Spieleinleitung
+Willkommen im Düsterwald, in diesem Wald sind schreckliche Dinge passiert. Werwölfe sind aus den Tiefen des Waldes gekommen und stiften Unruhe im Dorf. Helft als Teil des Dorfes die Werwölfe zu stoppen oder versuche als Teil des Rudels das Dorf zu verspeisen.
+
+Das Ziel des Spiels ist es als Mitglied des Dorfes alle Werwölfe ausfindig zu machen und sie zu hängen. Als Werwolf ist es deine Aufgabe unentdeckt zubleiben und mit deinem Rudel das Dorf zu verspeisen. Es haben sich auch noch weitere Gestallten in das kleine Dorf verirrt der Flötenspieler hat es auf das Dorf abgesehen und möchte jegliche Überlebende unter seinen Zauberbann stellen. Doch auch in den Reihen der Werwölfe gibt es Unstimmigkeiten, der weiße Werwolf gibt sich nur mit einen Alleinigen Sieg zufrieden er frisst jeden egal ob Mensch oder Werwolf. 
+
+Jede Nacht geht das Dorf zu Bett, aber einige Gestalten können nachts nicht schlafen und treiben ihr Unwesen.  Unglücklicherweise fordern die Werwölfe jede Nacht ein Opfer, doch am Tage hat das Dorf die Möglichkeit sich zu rächen und einen Verdächtigen hinrichten zu lassen in der Hoffnung das so alle Werwölfe getötet werden.
+"
+autowrap_mode = 3
+
+[node name="Dorfbewohner" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Dorfbewohner"
+horizontal_alignment = 1
+
+[node name="GridContainerBewohner" type="GridContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Armor" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_pfkek")
+
+[node name="Armor_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Armor
+Fraktion: Dorf
+Funktion: Der Armor wacht in der ersten Nacht auf und verleib zwei seiner Mitspieler in einen unsterblichen Liebesbund. Er darf auch sich selbst als einer der Verliebten wählen.
+"
+autowrap_mode = 3
+
+[node name="Hexe" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("3_dkk35")
+
+[node name="Hexe_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Hexe
+Fraktion: Dorf
+Funktion: Trotz ihrer Natur möchte die Hexe dem Dorf im Kampf gegen die Werwölfe helfen. Sie hat zwei mächtige Tränke. Einen der einem Opfer vor dem Tod bewahrt, diesen kann sie auf sich selbst anwenden oder auf einen ihrer Mitspieler.
+"
+autowrap_mode = 3
+
+[node name="Seherin" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("4_jfic3")
+
+[node name="Seherin_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Seherin
+Fraktion: Dorf
+Funktion: Die Seherin darf mit Hilfe ihrer magischen Kugel die Identitäten ihrer Mitspieler für sich selbst aufdecken. Es sollte mit bedacht gehandelt werden die Seherin ist ein begehrtes Ziel der Werwölfe, ihr überleben ist der Schlüssel zum Sieg.
+"
+autowrap_mode = 3
+
+[node name="Jäger" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("5_oafhn")
+
+[node name="Jäger_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Jäger
+Fraktion: Dorf
+Funktion: Der Jäger ist ein geschickter Schütze, der niemals ohneFlinte aus dem Haus geht. Im Falle eines Ablebens kann der Jäger 
+mit einem präzisen Schuss einen Mitspieler mit ins Grab nehmen.
+"
+autowrap_mode = 3
+
+[node name="Mädchen" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("6_n8qk5")
+
+[node name="Mädchen_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Mädchen
+Fraktion: Dorf
+Funktion: Das Mädchen ist bei allen Bewohnern immer stets willkommen. Sie darf jede Nacht sich einen neuen Ort zum Übernachten aussuchen und ist somit gegen direkte Angriffe in der Nacht gegen sie nicht betroffen das sie selbst nicht zu Haus ist. Stirbt aber ihr Gastgeber in der Nacht wird sie auch Opfer des Angriffes und stirbt.
+"
+autowrap_mode = 3
+
+[node name="Engel" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("7_w02tg")
+
+[node name="Engel_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Engel
+Fraktion: Dorf
+Funktion: Der Engel kommt ins Dorf, um das Leiden zu verringern. Er darf jede Nacht einen seiner Mitspieler einen Segen geben, der gegen alle Angriffe schützt. Der Engel hat aber nicht die Möglichkeit selbst Schützen.
+"
+autowrap_mode = 3
+
+[node name="Schwester" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("8_a8uh1")
+
+[node name="Schwestern_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Schwestern
+Fraktion: Dorf
+Funktion: Die Schwestern wachen in der ersten Nacht auf und lernen sich kennen. Danach wachen sie jede zweite Nacht und dürfen kommunizieren.
+"
+autowrap_mode = 3
+
+[node name="Bärenführer" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("9_8qapr")
+
+[node name="Bärenführer_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Bärenführer
+Fraktion: Dorf
+Funktion: Der Bärenführer ist im Dorf bekannt. Sein Bär hat ein Gespür für Werwölfe, sobald ein Werwolf direkt neben dem Bärenführer sitz brummt sein Bär am Morgen, um ihm mitzuteilen das Gefahr im Verzug ist. 
+"
+autowrap_mode = 3
+
+[node name="Ritter" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("10_c173q")
+
+[node name="Ritter_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Ritter
+Fraktion: Dorf
+Funktion: Der Ritter ist schon lange aus seinen glorreichen Jahren heraus und hat sich im Dorf niedergelassen. Mit seiner rostigen Klinge ist er eine Gefahr für die Werwölfe den, wenn der Ritter stirbt, wird er in seinem Todeskampf den nächsten Werwolf im Uhrzeigersinn von ihm verletzt.
+"
+autowrap_mode = 3
+
+[node name="Fuchs" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("11_2wkgl")
+
+[node name="Fuchs_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Fuchs
+Fraktion: Dorf
+Funktion: Der Fuchs hat ein Gespür für Werwölfe den jede Nacht darf er sich eine Person aussuchen. Die ausgesuchte Person und die direkten Nachbaren werden vom Fuchs untersucht und erfährt, ob sich Werwölfe unter den dreien befindet. Er erfährt nur, ob sichmindestens ein Werwolf unter den dreien befindet, weiß aber nicht,ob es mehr als einer ist oder wo sie sind. Verfehlt der Fuchs aber bei seiner Untersuchung die Werwölfe verliert er seine Fähigkeit. 
+"
+autowrap_mode = 3
+
+[node name="Alte" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("12_2j2wn")
+
+[node name="Alte_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Alte
+Fraktion: Dorf
+Funktion: Der Alte kann mit seiner Weisheit einen Angriff der Werwölfe überleben und braucht eine zweite Attacke, um ihn zu töten. Wird er jedoch durch die Hexe, Jäger oder durch das Dorf getötet wird ist er sofort tot und das Dorf verliert den höhst gelehrten Mann.
+"
+autowrap_mode = 3
+
+[node name="Dorfbewohner" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("13_772kk")
+
+[node name="Dorfbewohner_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerBewohner"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Bewohner
+Fraktion: Dorf
+Funktion: 
+Der Dorfbewohner hat keine besonderen Fähigkeiten, aber er hat die Abstimmung als mächtiges Werkzeug zu Hand.
+"
+autowrap_mode = 3
+
+[node name="Werwölfe" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Werwölfe"
+horizontal_alignment = 1
+
+[node name="GridContainerWerwolf" type="GridContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Werwolf" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerWerwolf"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("14_k2wsm")
+
+[node name="Werwolf_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerWerwolf"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Werwolf
+Fraktion: Werwölfe
+Funktion:
+Die normalen Werwölfe kommen jede Nacht zusammen, um im Rudel zu entscheiden welches Opfer die Werwölfe in der Nacht verspeisen möchten.
+"
+autowrap_mode = 3
+
+[node name="Großer Werwolf" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerWerwolf"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("15_jxqi3")
+
+[node name="Großer Werwolf_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerWerwolf"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Großer Werwolf
+Fraktion: Werwölfe
+Funktion:
+Der große Werwolf darf so lange sein originales Rudel noch am Leben ist jede Nacht nach den Werwölfen noch ein zweites Opfer wählen, um sein 
+Hunger zu stillen.
+"
+autowrap_mode = 3
+
+[node name="Urwerwolf" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerWerwolf"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("16_1qgmf")
+
+[node name="Urwerwolf_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerWerwolf"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Urwolf
+Fraktion: Werwölfe
+Funktion:
+Der Urwolf hat die Fähigkeit ein Opfer mit dem Werwolf-Fluch zu belegen. Sobald dies passiert, spielt das infizierte Opfer mit dem Werwolf Rudel. Das Opfer behält aber weiter hin seine Fähigkeiten.
+"
+autowrap_mode = 3
+
+[node name="Wechselnde" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Wechselnde"
+horizontal_alignment = 1
+
+[node name="GridContainerSwitch" type="GridContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Wolfshund" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerSwitch"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("19_pfkek")
+
+[node name="Wolfshund_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerSwitch"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Wolfshund
+Fraktion: Dorf/Werwölfe
+Funktion:
+Der Wolfshund darf am Anfang der des Spiels entscheiden, ob er im Dorf belieben möchte, um dort das Dorf zu unterstützen oder er entscheidet 
+sich zurück in die Wildnis zu gehen und sich dem Werwolf Rudel anzuschließen."
+autowrap_mode = 3
+
+[node name="Wildes Kind" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerSwitch"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("20_dkk35")
+
+[node name="Wildes Kind_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerSwitch"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Wildes Kind
+Fraktion: Dorf/Werwölfe
+Funktion:
+Das wilde Kind kehrt, nach dem es bei den Werwölfen großgezogen wurde ins Dorf zurück. Es sucht sich ein Idol aus, doch wenn das Idolstirbt, geht das Kind zurück zu den Werwölfen und schließt sich dem Rudel an.
+"
+autowrap_mode = 3
+
+[node name="Einzelspieler" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Einzelspieler"
+horizontal_alignment = 1
+
+[node name="GridContainerSolo" type="GridContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Flötenspieler" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerSolo"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("17_a8vfl")
+
+[node name="Flötenspielerr_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerSolo"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Flötenspieler
+Fraktion: Solo
+Funktion:
+Der einst verstoßene Flötenspieler kommt ins Dorf zurück, um sich zu rächen. Er wacht jede Nacht auf und verzaubert zwei lebenden Mitspieler mit seinem musikalischen Bann. Sobald er alle lebenden Spieler verzaubert hat, gewinnt er, wird sein lebend jedoch vorzeitig beendet verfliegt der Zauber aus dem Dorf.
+"
+autowrap_mode = 3
+
+[node name="Weißer Werwolf" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerSolo"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("18_g4bjw")
+
+[node name="Weißer Werwolf_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainerSolo"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Rolle: Weiße Werwolf
+Fraktion: Werwölfe/Solo
+Funktion:
+Der weiße Werwolf ist der bösartigste aller Werwölfe. Er verabscheut die Werwölfe genau so wie die Dorfbewohner. Er wacht mit den Werwölfen auf und sucht mit ihnen ein Opfer und jede zweite Nacht darf er einen Werwolf töten um am Ende als letzter Überlebender übrig zu bleiben.
+"
+autowrap_mode = 3
+
+[node name="Back" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="text_changed" from="Panel/VBoxContainer/HBoxContainer/searchbar" to="." method="_on_searchbar_text_changed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Back" to="." method="_on_button_back_pressed"]
