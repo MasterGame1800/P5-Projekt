@@ -1,5 +1,14 @@
+"""
+This script defines various character roles and their unique abilities in the game.
+Each function represents a specific role and its associated actions or properties.
+"""
+
 extends Node
 
+"""
+Represents the Switch Child role.
+If it's the first night, the role performs specific actions.
+"""
 func switch_child(first_night):
 	if first_night:
 		pass
@@ -7,6 +16,10 @@ func switch_child(first_night):
 	pass
 #wählt ein Idol, wenn dieses stirbt, wird es zum Werwolf
 
+"""
+Represents the Switch Hound role.
+Allows the player to choose their faction at the beginning.
+"""
 func switch_hound(first_night):
 	if first_night:
 		pass
@@ -14,36 +27,60 @@ func switch_hound(first_night):
 	pass
 #darf am Anfang seine Fraktion wählen
 
+"""
+Represents the Village Sisters role.
+Specific actions are performed during the first night.
+"""
 func village_sisters(first_night):
 	if first_night:
 		pass
 	var id = 03
 	pass
 
+"""
+Represents the Village Armor role.
+Allows enchanting two players during the first night.
+"""
 func village_armore():
 	var id = 04
 	print("Armor")
 	pass
 #darf in der ersten Nacht zwei Spieler verzaubern
 
+"""
+Represents the Village Fremdgeherin role.
+Allows the player to sleep at another player's location each night.
+"""
 func village_fremdgeherin():
 	var id = 06
 	print("Liebhaberin")
 	pass
 #darf jede Nacht bei einen Spieler schlafen
 
+"""
+Represents the Village Angel role.
+Allows the player to protect another player.
+"""
 func village_angel():
 	var id = 07
 	print("Engel")
 	pass
 #darf einen Spieler schützen
 
+"""
+Represents the Village Seer role.
+Allows the player to view another player's card.
+"""
 func village_seer():
 	var id = 08
 	print("Seherin")
 	pass
 #darf eine Karte eines Spielers sehen
 
+"""
+Represents the Werewolf Vote role.
+Allows all living werewolves to vote for a victim.
+"""
 func werewolf_vote():
 	var id = 09
 	print("Werwolf")

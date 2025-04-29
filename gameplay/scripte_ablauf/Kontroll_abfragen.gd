@@ -1,3 +1,23 @@
+"""
+This script handles various game checks and updates, including victory conditions, player states, and special character effects.
+
+Classes and Variables:
+- Player_cards: Preloaded script for managing player cards.
+- LabelVictory: Label node for displaying victory messages.
+- Labeldead: Label node for displaying dead player messages.
+
+Functions:
+- enchanted(): Handles the enchanted state of players.
+- in_love(): Handles the in-love state of players.
+- in_love_dead(): Updates player states when in-love players die.
+- sleepover_dead(): Updates player states for sleepover-related deaths.
+- sleepover_reset(): Resets the sleepover state of players.
+- reset_guard(): Resets the guard state of players.
+- knight(): Handles the knight character's special actions.
+- dead_players(): Updates and displays the list of dead players.
+- victory(): Checks and displays victory conditions based on player states.
+"""
+
 extends Node
 
 var Player_cards = preload("res://menu/menu_script/cards.gd").new()

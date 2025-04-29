@@ -1,3 +1,42 @@
+"""
+This script manages multiplayer functionality using Nakama.
+It includes authentication, match creation, joining, and communication.
+
+Classes and Variables:
+- client: NakamaClient instance for server communication.
+- session: NakamaSession instance for user authentication.
+- socket: NakamaSocket instance for real-time communication.
+- the_match: Current match object.
+- current_match_id: ID of the current match.
+- current_users: Dictionary mapping session IDs to user presence.
+- display_names: Dictionary mapping session IDs to display names.
+- player_numbers: Dictionary mapping session IDs to player numbers.
+- my_session_id: Session ID of the current user.
+- no_count: Counter for some functionality.
+
+Signals:
+- users_updated(users): Emitted when the user list is updated.
+- count_changed(count): Emitted when the count changes.
+- start_game: Emitted to signal the start of the game.
+- updated_players_properties(players): Emitted when player properties are updated.
+
+Functions:
+- _ready(): Initializes the Nakama client.
+- authenticate(): Authenticates the user using a device ID.
+- connect_to_server(): Connects to the Nakama server.
+- create_match(): Creates a new match on the server.
+- join_match(match_id): Joins an existing match by ID.
+- find_match_id_by_code(code): Finds a match ID by a given code.
+- _reassign_all(): Reassigns player numbers and updates display names.
+- _on_match_presence(event): Handles match presence events (joins/leaves).
+- update_display_name(new_name): Updates the display name of the current user.
+- update_players_propertys(players): Updates player properties and sends them to the match.
+- _on_received_match_state(p_state): Handles received match state updates.
+- send_data_to_match(data, op_code): Sends data to the match with a specific opcode.
+- leave_match(): Leaves the current match.
+- send_count(count): Sends a count value to the match.
+"""
+
 extends Node
 
 var client : NakamaClient

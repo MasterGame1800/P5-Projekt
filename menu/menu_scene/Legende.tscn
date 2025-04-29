@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ciy1lbtx65o54"]
+[gd_scene load_steps=28 format=3 uid="uid://ciy1lbtx65o54"]
 
 [ext_resource type="Script" uid="uid://b0wv313b4gt2u" path="res://menu/menu_script/legende_menu.gd" id="1_4sp3v"]
 [ext_resource type="Texture2D" uid="uid://dl523otl6p84y" path="res://assets/cards/Armor.png" id="2_pfkek"]
@@ -20,6 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://dys4yvbfm222j" path="res://assets/cards/WhiteWolf.png" id="18_g4bjw"]
 [ext_resource type="Texture2D" uid="uid://fvj05ppejb50" path="res://assets/cards/WolfChild.png" id="19_pfkek"]
 [ext_resource type="Texture2D" uid="uid://bqfe7u57eisn" path="res://assets/cards/Child.png" id="20_dkk35"]
+[ext_resource type="Texture2D" uid="uid://bnxdejkwxd8mj" path="res://assets/status/enchanted.png" id="21_a8uh1"]
+[ext_resource type="Texture2D" uid="uid://b2nam1t5dhiht" path="res://assets/status/guarded.png" id="22_8qapr"]
+[ext_resource type="Texture2D" uid="uid://ct1wedx37s4so" path="res://assets/status/idol.png" id="23_c173q"]
+[ext_resource type="Texture2D" uid="uid://c0pwvt27dbguh" path="res://assets/status/infected.png" id="24_2wkgl"]
+[ext_resource type="Texture2D" uid="uid://cwqn4n0n7cyts" path="res://assets/status/love.png" id="25_2j2wn"]
+[ext_resource type="Texture2D" uid="uid://dp8lndvtc6v4w" path="res://assets/status/mayor.png" id="26_772kk"]
+[ext_resource type="Texture2D" uid="uid://c3a5qrh7rhdgv" path="res://assets/status/wound.png" id="27_k2wsm"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -447,6 +454,114 @@ text = "Rolle: Weiße Werwolf
 Fraktion: Werwölfe/Solo
 Funktion:
 Der weiße Werwolf ist der bösartigste aller Werwölfe. Er verabscheut die Werwölfe genau so wie die Dorfbewohner. Er wacht mit den Werwölfen auf und sucht mit ihnen ein Opfer und jede zweite Nacht darf er einen Werwolf töten um am Ende als letzter Überlebender übrig zu bleiben.
+"
+autowrap_mode = 3
+
+[node name="Effekte" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Status Effekte"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Verzaubert" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("21_a8uh1")
+expand_mode = 1
+
+[node name="Verzaubert_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Verzaubert
+Verzauberte Spieler wachen jede Nacht nach dem Flötenspieler auf und schauen nach ihm. Sie können gemeinsam herausfinden, wer er ist und ihn von seinem Vorhaben abhalten. Nachdem der Flötenspieler verstorben ist, wird der Zauber aufgehoben.
+"
+autowrap_mode = 3
+
+[node name="Engelschutz" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("22_8qapr")
+
+[node name="Engelschutz_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Engelschutz 
+Der Engelsegen schütz dich in der Nacht gegen alle Angriffe. Am tage verfliegt aber der Schutz und du bist wieder verwundbar. 
+"
+autowrap_mode = 3
+
+[node name="Idol" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("23_c173q")
+
+[node name="Idol_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Idol
+Das Kind schaut zum Idol hinauf und verlässt das Dorf wieder, falls sein Lieblingsbewohner verstirbt.
+"
+autowrap_mode = 3
+
+[node name="Infiziert" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("24_2wkgl")
+
+[node name="Infiziert_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Infiziert
+Infizierte Spieler schlissen sich unverzüglich dem Werwolf Rudel an spielen mit ihnen. Spieler mit Fähigkeiten behalten diese bei und werden weiterhin aufgerufen.
+"
+autowrap_mode = 3
+
+[node name="Verliebt" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("25_2j2wn")
+
+[node name="Verliebt_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Verliebte
+Die Verliebten sind in einen so tiefen Liebesbund das sie ohneeinander nicht mehr leben können. Im falle das einer der verliebten verstirbt stirbt auch der andere.
+"
+autowrap_mode = 3
+
+[node name="Bürgermeister" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("26_772kk")
+
+[node name="Bürgermeister_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Bürgermeister
+Der Bürgermeister wird am Tag vom Dorf gewählt und erhält bei Abstimmungen eine halbe Stimme mehr.
+"
+autowrap_mode = 3
+
+[node name="Verletzt" type="TextureRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("27_k2wsm")
+
+[node name="Verletzt_" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Verletzt
+Der Verletzte Werwolf wird durch die rostige Klinge des Ritters langsam vergiftet und stirbt an den folgen am nächsten Tag.
 "
 autowrap_mode = 3
 

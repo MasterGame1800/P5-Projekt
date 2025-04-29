@@ -1,3 +1,20 @@
+"""
+This script extends the Control class and manages the session menu functionality.
+
+Variables:
+- player_count_input: Input field for the player count.
+- players_label: Label displaying the list of players.
+- start_button: Button to start the game.
+- player_name_input: Input field for the player's name.
+
+Functions:
+- _ready: Connects signals and initializes the session menu.
+- _on_users_updated: Updates the player list and enables/disables the start button.
+- _on_player_name_input_text_submitted: Updates the player's display name.
+- _on_start_button_pressed: Sends a signal to start the game and loads the game scene.
+- load_game: Loads the game scene and sets the player count.
+"""
+
 extends Control
 
 @onready var player_count_input = $VBoxContainer/PlayerCountContainer/PlayerCountInput
@@ -7,8 +24,8 @@ extends Control
 
 
 func _ready() -> void:
-	NakamaManager.users_updated.connect(_on_users_updated)
-	NakamaManager.start_game.connect(load_game)
+    NakamaManager.users_updated.connect(_on_users_updated)
+    NakamaManager.start_game.connect(load_game)
 
 
 func _on_users_updated(users):

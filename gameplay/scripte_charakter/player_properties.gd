@@ -1,3 +1,8 @@
+"""
+This script defines the properties and initialization of player characters.
+It includes attributes like player ID, statuses, and methods for assigning properties.
+"""
+
 extends Node
 
 #var character_id = character_id()
@@ -11,6 +16,9 @@ var infected: bool = false		#if the player is indected by the werewolves
 var sleepover: bool = false		#if the girl sleeps by the player
 var guard: bool = false			#if the player is guarded by the angle
 
+"""
+Initializes the player properties with default values.
+"""
 func player_properties():
 	player_id = 0
 	dead = false			#max all player
@@ -25,6 +33,9 @@ func player_properties():
 
 var player_numm = 8
 
+"""
+Assigns properties to a list of players based on the number of players.
+"""
 func player_asign(player_num):
 	var player_list = []
 	for i in range(player_num):

@@ -1,3 +1,27 @@
+"""
+This script manages the overall game flow, including player properties, night and day cycles, and special character actions.
+
+Classes and Variables:
+- character: Preloaded character script.
+- Kontroll: Preloaded control script for game checks.
+- Player_cards: Preloaded script for managing player cards.
+- first_life: Boolean to track if a player is in their first life.
+- waiting_num: Counter for waiting loops.
+- my_player_name: Name of the current player.
+- player_list: List of all players in the game.
+- player_list_copy: Copy of the player list for comparison.
+
+Functions:
+- set_cards_without_me(): Sets cards for players excluding the current player.
+- effect_change(): Updates player effects based on game events.
+- waiting_loop(): Implements a waiting loop for synchronization.
+- property_update(): Updates player properties based on character IDs.
+- get_my_data(): Retrieves the current player's data.
+- start_loop(): Starts the main game loop with night and day cycles.
+- nights(): Handles night-specific actions for characters.
+- day(): Handles day-specific actions, including voting and resetting states.
+"""
+
 extends Node
 
 var character = preload("res://gameplay/scripte/character.gd").new()

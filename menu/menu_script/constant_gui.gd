@@ -1,3 +1,15 @@
+"""
+This script extends the Control class and manages constant GUI elements and their interactions.
+
+Variables:
+- main_node: The parent node of the GUI.
+
+Functions:
+- _on_button_settings_pressed: Placeholder for settings button functionality.
+- _on_button_explanation_pressed: Hides the current GUI and shows the legend.
+- _on_button_back_pressed: Handles back button functionality, including quitting the game or leaving a match.
+"""
+
 extends Control
 
 @onready var main_node = get_parent()

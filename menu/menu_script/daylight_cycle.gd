@@ -1,5 +1,37 @@
 extends DirectionalLight3D
 
+"""
+This script extends the DirectionalLight3D class and manages the day-night cycle in the game.
+
+Variables:
+- max_light_energy: Maximum light energy during the day.
+- min_light_energy: Minimum light energy during the night.
+- light_color_day: Light color during the day.
+- light_color_night: Light color during the night.
+- ambient_color_day: Ambient light color during the day.
+- ambient_color_night: Ambient light color during the night.
+- transition_duration: Duration of the transition between day and night.
+- world_environment: The world environment node.
+- sky_material: Shader material for the sky.
+- sky_top_color_day: Top sky color during the day.
+- sky_top_color_night: Top sky color during the night.
+- sky_horizon_color_day: Horizon sky color during the day.
+- sky_horizon_color_night: Horizon sky color during the night.
+- sun_color_day: Sun color during the day.
+- sun_color_night: Sun color during the night.
+- sun_size_day: Sun size during the day.
+- sun_size_night: Sun size during the night.
+- is_day: Boolean indicating whether it is currently day.
+
+Functions:
+- toggle_daynight: Toggles between day and night.
+- set_sky_top_color: Sets the top sky color.
+- set_sky_horizon_color: Sets the horizon sky color.
+- set_sun_color: Sets the sun color.
+- set_sun_size: Sets the sun size.
+- _ready: Initializes the light and ambient colors for the day.
+"""
+
 @export var max_light_energy: float = 1.5
 @export var min_light_energy: float = 0.1
 @export var light_color_day: Color = Color(1.0, 0.95, 0.9)

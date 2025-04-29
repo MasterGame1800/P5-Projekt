@@ -1,3 +1,15 @@
+"""
+This script defines the main game flow, including night and day cycles, and character-specific actions.
+
+Classes and Variables:
+- character: Preloaded character script.
+
+Functions:
+- start(): Starts the main game loop.
+- nights(): Handles night-specific actions for characters.
+- day(): Handles day-specific actions, including special character effects and resetting states.
+"""
+
 extends Node
 
 var character = preload("res://gameplay/scripte_charakter/charakter.gd").new()

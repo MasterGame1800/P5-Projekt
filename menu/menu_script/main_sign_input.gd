@@ -1,26 +1,21 @@
-extends Area3D
+"""
+This script extends the Area3D class and forwards input events to a Control node used as a texture.
 
-################################################################################
-# Disclaimer: Browsing the Web for this has only resulted in outdated Projects 
-# or others only written in C++ and not fitting for this specifically.
-# Therefore I have used ChatGPT with Reasoning and Web-Search enabled to help 
-# generate this code.
-# --------- Prompt 1:
-# In a Godot 4 Project i have a sign MeshInstance3D with a complex mesh where
-# only one materia uses a Control node as a texture. i want to forward the
-# necessary Inputs to the Control node. Generate a code based on this Structure
-# Node3D
-# - SubViewport
-# -- Control
-# 
-# - MainSign
-# -- Area3D
-# --- CollisionShape3D
-#
-# --------- Prompt 2:
-# The provided Code doen't work for LineEdit Nodes. Modify it to work for that
-# aswell by forwarding the Inputs accordingly
-################################################################################
+Variables:
+- viewport: The SubViewport containing the UI.
+- ui_control: The Control node receiving the forwarded inputs.
+- is_ui_focused: Boolean indicating if the UI is focused.
+- focused_control: The currently focused Control node.
+
+Functions:
+- _ready: Connects the input event signal and enables input processing.
+- _on_input_event: Handles input events and forwards them to the UI.
+- _input: Forwards key input events to the UI when focused.
+- _on_focus_exited: Resets the focus state when the UI loses focus.
+- find_control_at_position: Finds the Control node at a given position.
+"""
+
+extends Area3D
 
 @export var viewport: SubViewport
 @export var ui_control: Control

@@ -1,3 +1,33 @@
+"""
+This script is an improved version of the voting process in the game. It manages the voting logic, creates buttons for players to vote, and updates player properties based on the votes.
+
+Classes and Variables:
+- All_players: Preloaded player properties script.
+- button_count: Number of buttons created for voting.
+- radius_x, radius_y: Coordinates for button placement in an oval shape.
+- button_size: Size of the voting buttons.
+- selected_button, selected_button_index: Tracks the currently selected button and its index.
+- skip_button: Button to skip voting.
+- voting_finished: Boolean to track if voting is completed.
+- players: Array of players participating in the voting.
+- my_player_data: Array of the current player's data.
+- time: Voting duration.
+- types: String for additional voting types.
+- voting_timer: Timer to manage voting timeout.
+
+Functions:
+- _ready(): Initializes the voting timer and connects signals.
+- start_voting(): Starts the voting process, resets variables, and creates buttons.
+- create_oval_buttons(): Creates voting buttons in an oval layout.
+- create_confirm_button(): Creates a confirm button for voting.
+- create_skip_button(): Creates a skip button for voting.
+- _on_button_pressed(): Handles button press events and updates player votes.
+- _on_button_hover_entered(): Handles hover enter events for buttons.
+- _on_button_hover_exited(): Handles hover exit events for buttons.
+- _on_confirm_pressed(): Handles the confirm button press event.
+- _on_voting_timeout(): Handles voting timeout and finalizes the voting process.
+"""
+
 extends Control
 
 var All_players =  preload("res://gameplay/scripte/player_properties.gd").new()

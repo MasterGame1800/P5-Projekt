@@ -1,3 +1,29 @@
+"""
+This script defines various gameplay mechanics for a game, including voting and character-specific abilities.
+
+Classes and Variables:
+- `vote_menu`: A Control node used for managing voting menus.
+- `Player_cards`: A preloaded script for managing player cards.
+
+Functions:
+- `reset_votes(player_list)`: Resets the voting numbers for all players in the list.
+- `switch_child(player_list, my_data)`: Selects an idol based on votes. If the idol dies, it becomes a werewolf.
+- `switch_hound(player_list, my_data)`: Allows a player with character ID 02 to change their faction to ID 09.
+- `village_armore(player_list, my_data)`: Allows a player to enchant two players during the first night.
+- `village_fremdgeherin(player_list, my_data)`: Allows a player to sleep at another player's place each night.
+- `village_angel(player_list, my_data)`: Allows a player to protect another player.
+- `village_seer(player_list, my_data)`: Allows a player to see another player's card for 10 seconds.
+- `werewolfs(player_list, my_data)`: Allows all living werewolves to vote for a victim.
+- `werewolf_old_wolf(player_list, my_data)`: Allows the old wolf to infect another player.
+- `werewolf_big_bad_wolf(player_list, my_data)`: Allows the big bad wolf to select a second victim if all werewolves are alive.
+- `single_white_wolf(player_list, my_data)`: Allows the white wolf to kill a werewolf every second night.
+- `village_witch(player_list, my_data)`: Allows the witch to heal or kill a player each night.
+- `single_flute_player(player_list, my_data)`: Allows the flute player to enchant two players each night and win if all players are enchanted.
+- `village_hunter(player_list, my_data)`: Allows the hunter to kill a player upon their death.
+- `mayor(player_list, my_data)`: Handles the election of a new mayor if the current one dies.
+- `voting(player_list, my_data)`: Handles general voting mechanics.
+"""
+
 extends Node
 @export var vote_menu : Control
 var Player_cards = preload("res://menu/menu_script/cards.gd").new()

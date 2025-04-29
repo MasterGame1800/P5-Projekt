@@ -1,3 +1,15 @@
+"""
+This script extends the Node class and manages the loading of textures for roles and statuses.
+
+Variables:
+- role_paths: Dictionary mapping role IDs to their respective image paths.
+- status_path: Dictionary mapping status names to their respective image paths.
+
+Functions:
+- load_role_texture: Loads and returns the texture for a given role ID.
+- load_status_texture: Loads and returns the texture for a given status name.
+"""
+
 extends Node
 var role_paths = {
 	1: "res://assets/cards/Child.png",
