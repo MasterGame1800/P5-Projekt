@@ -1,6 +1,25 @@
 """
 This script defines various character roles and their unique abilities in the game.
-Each function represents a specific role and its associated actions or properties.
+
+Functions:
+    switch_child(first_night): Represents the Switch Child role. Performs specific actions during the first night.
+    switch_hound(first_night): Represents the Switch Hound role. Allows the player to choose their faction at the beginning.
+    village_sisters(first_night): Represents the Village Sisters role. Performs specific actions during the first night.
+    village_armore(): Represents the Village Armor role. Allows enchanting two players during the first night.
+    village_fremdgeherin(): Represents the Village Fremdgeherin role. Allows the player to sleep at another player's location each night.
+    village_angel(): Represents the Village Angel role. Allows the player to protect another player.
+    village_seer(): Represents the Village Seer role. Allows the player to view another player's card.
+    werewolf_vote(): Represents the Werewolf Vote role. Allows all living werewolves to vote for a victim.
+    werewolf_old_wolf(): Represents the Werewolf Old Wolf role. Allows infecting a player.
+    werewolf_big_bad_wolf(): Represents the Werewolf Big Bad Wolf role. Allows choosing a second victim if all werewolves are alive.
+    single_white_wolf(): Represents the Single White Wolf role. Allows killing a werewolf every second night.
+    village_witch(): Represents the Village Witch role. Allows healing or killing once per night.
+    village_fox(): Represents the Village Fox role. Allows selecting a person each night to detect werewolves nearby.
+    single_flute_player(): Represents the Single Flute Player role. Allows enchanting two players each night and wins if all are enchanted.
+    village_bear(): Represents the Village Bear role. Receives an audio hint if a werewolf is nearby.
+    village_knight(): Represents the Village Knight role. Injures the nearest werewolf upon death.
+    village_tree(): Represents the Village Tree role. Has two lives against werewolves and one life against other sources.
+    village_hunter(): Represents the Village Hunter role. Allows killing a player upon death.
 """
 
 extends Node

@@ -1,6 +1,21 @@
 """
 This script defines the properties and initialization of player characters.
 It includes attributes like player ID, statuses, and methods for assigning properties.
+
+Attributes:
+    player_id (int): Unique identifier for the player.
+    dead (bool): Indicates if the player is killed.
+    enchanted (bool): Indicates if the player is enchanted by the flute.
+    in_love (bool): Indicates if the player is in love.
+    idol (bool): Indicates if the player is the idol.
+    mayor (bool): Indicates if the player is the mayor.
+    infected (bool): Indicates if the player is infected by the werewolves.
+    sleepover (bool): Indicates if the girl sleeps by the player.
+    guard (bool): Indicates if the player is guarded by the angel.
+
+Methods:
+    player_properties(): Initializes the player properties with default values.
+    player_asign(player_num): Assigns properties to a list of players based on the number of players.
 """
 
 extends Node

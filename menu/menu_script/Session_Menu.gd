@@ -1,18 +1,20 @@
 """
-This script extends the Control class and manages the session menu functionality.
+This script extends the Control node and manages the session menu for multiplayer gameplay.
 
 Variables:
-- player_count_input: Input field for the player count.
+- player_count_input: Input field for the number of players.
 - players_label: Label displaying the list of players.
 - start_button: Button to start the game.
 - player_name_input: Input field for the player's name.
+- ablauf: Preloaded script for game flow.
+- host: Boolean indicating if the player is the host.
 
 Functions:
 - _ready: Connects signals and initializes the session menu.
 - _on_users_updated: Updates the player list and enables/disables the start button.
 - _on_player_name_input_text_submitted: Updates the player's display name.
 - _on_start_button_pressed: Sends a signal to start the game and loads the game scene.
-- load_game: Loads the game scene and sets the player count.
+- load_game: Loads the game scene and initializes it.
 """
 
 extends Control
@@ -21,11 +23,12 @@ extends Control
 @onready var players_label = $VBoxContainer/ScrollContainer/VBoxContainer/Label
 @onready var start_button = $VBoxContainer/StartButton
 @onready var player_name_input = $VBoxContainer/PlayerNameContainer/PlayerNameInput
-
+var ablauf = preload("res://gameplay/scripte_ablauf/Spielablauf.gd").new()
+var host = false
 
 func _ready() -> void:
-    NakamaManager.users_updated.connect(_on_users_updated)
-    NakamaManager.start_game.connect(load_game)
+	NakamaManager.users_updated.connect(_on_users_updated)
+	NakamaManager.start_game.connect(load_game)
 
 
 func _on_users_updated(users):
@@ -56,6 +59,7 @@ func _on_player_name_input_text_submitted(given_name):
 
 func _on_start_button_pressed():
 	NakamaManager.send_data_to_match({"start_game": true}, 3)
+	host = true
 	load_game()
 
 
@@ -65,3 +69,4 @@ func load_game():
 	get_tree().root.add_child(game_scene)
 	get_tree().current_scene.queue_free()
 	get_tree().current_scene = game_scene
+	#ablauf.start_loop(host)

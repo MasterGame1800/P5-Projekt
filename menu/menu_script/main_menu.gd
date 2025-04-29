@@ -1,5 +1,5 @@
 """
-This script extends the Control class and manages the main menu functionality.
+This script extends the Control node and manages the main menu for the game.
 
 Variables:
 - main_node: The parent node of the main menu.
@@ -7,9 +7,9 @@ Variables:
 - auth_result: Boolean indicating the authentication result.
 
 Functions:
-- _ready: Authenticates the user and prints the result.
-- _on_button_host_pressed: Creates a match and transitions to the session camera.
-- _on_button_join_pressed: Joins a match using the provided match code.
+- _ready: Authenticates the player and prints the connection status.
+- _on_button_host_pressed: Creates a new match and transitions to the session camera.
+- _on_button_join_pressed: Joins an existing match using the provided match code.
 """
 
 extends Control

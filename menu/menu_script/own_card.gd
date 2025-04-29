@@ -1,15 +1,15 @@
 """
-This script extends the Control class and manages the behavior of a card in the game.
+This script extends the Control node and manages the behavior of a player's card.
 
 Variables:
-- card_rect: The rectangle representing the card.
+- card_rect: The card's texture rectangle.
 - current_status: List of current statuses applied to the card.
 
 Functions:
 - _on_texture_rect_mouse_entered: Animates the card when the mouse enters.
 - _on_texture_rect_mouse_exited: Animates the card when the mouse exits.
-- _animate_card: Handles the animation of the card.
-- set_texture: Sets the texture of the card based on the role ID.
+- _animate_card: Handles the animation of the card's anchors.
+- set_texture: Sets the card's texture based on the role ID.
 - add_status: Adds a status icon to the card.
 - remove_status: Removes a status icon from the card.
 - update_status: Updates the card's statuses based on the player's properties.

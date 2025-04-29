@@ -1,5 +1,5 @@
 """
-This script handles various game checks and updates, including victory conditions, player states, and special character effects.
+This script defines various game mechanics and checks for a multiplayer game.
 
 Classes and Variables:
 - Player_cards: Preloaded script for managing player cards.
@@ -7,22 +7,22 @@ Classes and Variables:
 - Labeldead: Label node for displaying dead player messages.
 
 Functions:
-- enchanted(): Handles the enchanted state of players.
-- in_love(): Handles the in-love state of players.
-- in_love_dead(): Updates player states when in-love players die.
-- sleepover_dead(): Updates player states for sleepover-related deaths.
-- sleepover_reset(): Resets the sleepover state of players.
-- reset_guard(): Resets the guard state of players.
-- knight(): Handles the knight character's special actions.
-- dead_players(): Updates and displays the list of dead players.
-- victory(): Checks and displays victory conditions based on player states.
+- enchanted(players): Handles the enchanted status of players.
+- in_love(players): Handles the in-love status of players.
+- in_love_dead(players): Checks and updates the status of players in love if one of them dies.
+- sleepover_dead(players): Handles the sleepover status and its consequences.
+- sleepover_reset(players): Resets the sleepover status for all players.
+- reset_guard(players): Resets the guard status for all players.
+- knight(players): Implements the knight's game logic.
+- dead_players(players, my_data): Updates the dead players and displays messages.
+- victory(players): Determines the victory conditions for the game.
 """
 
 extends Node
 
 var Player_cards = preload("res://menu/menu_script/cards.gd").new()
-@onready var LabelVictory = $/root/Node3D/VictoryLabel
-@onready var Labeldead = $/root/Node3D/DeadLabel
+@export var LabelVictory : Label #$/root/Node3D/VictoryLabel
+@export var Labeldead : Label #$/root/Node3D/DeadLabel
 
 
 func enchanted(players):
@@ -32,7 +32,7 @@ func enchanted(players):
 		if players[player].enchanted:
 			enchanted_names.append(players[player])
 	Player_cards.flip(enchanted_names)
-	await get_tree().create_timer(10).timeout 
+	#await get_tree().create_timer(10).timeout 
 	Player_cards.flip(enchanted_names)
 
 func in_love(players):
@@ -42,7 +42,7 @@ func in_love(players):
 		if players[player].in_love:
 			in_love_num.append(players[player])
 	Player_cards.flip(in_love_num)
-	await get_tree().create_timer(10).timeout 
+	#await get_tree().create_timer(10).timeout 
 	Player_cards.flip(in_love_num)
 
 
@@ -74,7 +74,7 @@ func sleepover_reset(players):
 	
 func reset_guard(players):
 	
-	for player in players.size:
+	for player in players.size():
 		if players[player].guard:
 			players[player].guard = false
 	return players
@@ -168,28 +168,40 @@ func victory(players):
 		if player1.dead == false and player1.infected:
 			player_list.append(player1)
 	if player_list.size() >= alive_num:
-		LabelVictory.text = "Die Infizierten haben gewonnen"
+		return false
+		
+		#LabelVictory.text = "Die Infizierten haben gewonnen"
 	
 	player_list = []
 	for player2 in players:
 		if player2.dead == false and player2.enchanted:
 			player_list.append(player2)
 	if player_list.size() >= alive_num:
-		LabelVictory.text = "Der Flötenspieler hat gewonnen"
+		return false
+		
+		#LabelVictory.text = "Der Flötenspieler hat gewonnen"
 	
 	player_list = []
 	for wolf in players:
 		if wolf.dead == false and (wolf.character_id != 09 or wolf.character_id != 10 or wolf.character_id != 11 or wolf.character_id != 12 or wolf.infected):
-			LabelVictory.text = "Das Dorf hat gewonnen"
+			return false
+			
+			#LabelVictory.text = "Das Dorf hat gewonnen"
 			
 	player_list = []
 	for player3 in players:
 		if player3.dead == false and (player3.character_id == 09 or player3.character_id == 10 or player3.character_id == 11 or player3.character_id == 12 or player3.infected):
 			player_list.append(player3)
 	if player_list == []:
-		LabelVictory.text = "Das Dorf hat gewonnen"
+		return false
+		
+		#LabelVictory.text = "Das Dorf hat gewonnen"
 	elif player_list.size() == alive_num:
-		LabelVictory.text = "Die Infizierten haben gewonnen"
+		return false 
+		#LabelVictory.text = "Die Infizierten haben gewonnen"
 	for player_w in player_list:
 		if player_list.size() == 1 and player_w.character_id == 12:
-			LabelVictory.text = "Der weiße hat gewonnen"
+			return false 
+			
+			#LabelVictory.text = "Der weiße hat gewonnen"
+	return true

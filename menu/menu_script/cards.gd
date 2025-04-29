@@ -1,43 +1,32 @@
 """
-This script defines a Node3D class for managing and displaying 3D cards in a game.
+This script manages the card system in the game.
+It handles card generation, positioning, interaction, and appearance.
 
-Attributes:
-    game_camera (Camera3D): The camera used for rendering the game scene.
-    base_card_size (Vector2): The base size of the cards.
-    front_material (Material): The material for the front of the cards.
-    back_material (Material): The material for the back of the cards.
-    side_material (Material): The material for the sides of the cards.
-    materials (Array): A list of materials used for the card surfaces.
-    y_pos (float): The vertical position of the cards.
-    player_count (int): The number of players in the game.
-    log_list (Array): Coordinates for arranging cards in a circular pattern.
-    log_order (Array): Priority order for filling card positions.
-    size_factor (Array): Multipliers for card size based on player count.
-    card_positions (PackedVector3Array): Positions of the cards.
-    cards (Array): List of card instances.
-    card_table (Dictionary): Mapping of players to their respective cards.
+Classes and Variables:
+- game_camera: The camera used for the card system.
+- base_card_size: The base size of the cards.
+- front_material, back_material, side_material: Materials for the card surfaces.
+- materials: List of materials for the card mesh.
+- y_pos: Y-coordinate for card positioning.
+- player_count: Number of players in the game.
+- log_list: Predefined log coordinates for card placement.
+- log_order: Priority order for filling logs.
+- size_factor: Multiplier for card size based on player count.
+- card_positions: Array of card positions.
+- cards: Array of card instances.
+- card_table: Dictionary mapping players to cards.
 
-Methods:
-    generate_cards(count: int): Generates and positions the cards based on the player count.
-    _generate_positions(amount: int): Calculates positions for the cards.
-    _generate_log_positions(log: PackedVector3Array, count: int) -> PackedVector3Array:
-        Generates positions for cards along a specific log.
-    _create_mesh(size: Vector3) -> ArrayMesh:
-        Creates a 3D mesh for a card with the specified size.
-    _on_card_hovered(card: MeshInstance3D):
-        Handles the event when a card is hovered over.
-    _on_card_unhovered(card: MeshInstance3D):
-        Handles the event when a card is no longer hovered over.
-    set_hover_text(card: MeshInstance3D, text: String):
-        Sets the hover text for a card.
-    flip(player):
-        Flips the cards for a specific player.
-    set_front_texture(card: MeshInstance3D, role):
-        Sets the front texture of a card based on the role.
-    set_player_data(players):
-        Maps players to their respective cards.
-    _ready():
-        Initializes the card materials and generates the cards.
+Functions:
+- generate_cards: Generates cards and positions them based on player count.
+- _generate_positions: Calculates card positions based on logs and player count.
+- _generate_log_positions: Generates positions for a specific log.
+- _create_mesh: Creates a 3D mesh for a card.
+- _on_card_hovered, _on_card_unhovered: Handles card hover interactions.
+- set_hover_text: Sets the hover text for a card.
+- flip: Flips the cards for a given player.
+- set_front_texture: Sets the front texture of a card based on role.
+- set_player_data: Maps players to cards.
+- _ready: Initializes materials and generates cards.
 """
 
 extends Node3D
@@ -272,11 +261,9 @@ func set_front_texture(card: MeshInstance3D, role):
 func set_player_data(players):
 	for index in cards.size():
 		card_table[players[index]] = cards[index]
-	print(card_table)
 
 func _ready():
 	back_material.albedo_texture = preload("res://assets/cards/Backside.png")
 	materials = [front_material, back_material, side_material, 
 	side_material, side_material, side_material]
 	generate_cards(player_count)
-	set_hover_text(cards[0], "TEst")

@@ -1,25 +1,27 @@
 """
-This script manages the overall game flow, including player properties, night and day cycles, and special character actions.
+This script manages the main game loop and player interactions for a multiplayer game.
 
 Classes and Variables:
-- character: Preloaded character script.
-- Kontroll: Preloaded control script for game checks.
+- character: Preloaded script for character-related logic.
+- Kontroll: Preloaded script for control checks.
 - Player_cards: Preloaded script for managing player cards.
-- first_life: Boolean to track if a player is in their first life.
+- All_players: Preloaded script for player properties.
+- first_life: Boolean to track the first life of a player.
 - waiting_num: Counter for waiting loops.
-- my_player_name: Name of the current player.
+- game_is_running: Boolean to track the game state.
 - player_list: List of all players in the game.
+- my_player_name: Name of the current player.
 - player_list_copy: Copy of the player list for comparison.
 
 Functions:
-- set_cards_without_me(): Sets cards for players excluding the current player.
-- effect_change(): Updates player effects based on game events.
-- waiting_loop(): Implements a waiting loop for synchronization.
-- property_update(): Updates player properties based on character IDs.
+- set_cards_without_me(my_data): Sets player cards excluding the current player.
+- effect_change(my_data): Updates player effects based on changes.
+- waiting_loop(): Implements a waiting loop with a timer.
+- property_update(players): Updates player properties based on character IDs.
 - get_my_data(): Retrieves the current player's data.
-- start_loop(): Starts the main game loop with night and day cycles.
-- nights(): Handles night-specific actions for characters.
-- day(): Handles day-specific actions, including voting and resetting states.
+- start_loop(host): Starts the main game loop.
+- nights(counter, my_data): Handles the night phase of the game.
+- day(my_data): Handles the day phase of the game.
 """
 
 extends Node
@@ -27,12 +29,14 @@ extends Node
 var character = preload("res://gameplay/scripte/character.gd").new()
 var Kontroll = preload("res://gameplay/scripte_ablauf/Kontroll_abfragen.gd").new()
 var Player_cards = preload("res://menu/menu_script/cards.gd").new()
+var All_players =  preload("res://gameplay/scripte/player_properties.gd").new()
 var first_life = true
 var waiting_num = 0
+var game_is_running = true
 
-
-var my_player_name = NakamaManager.display_names[NakamaManager.my_session_id] 
 var player_list = []
+var my_player_name = ""
+#my_player_name = NakamaManager.display_names[NakamaManager.my_session_id] 
 var player_list_copy = player_list 
 
 func set_cards_without_me(my_data):
@@ -41,7 +45,7 @@ func set_cards_without_me(my_data):
 		if player_list[player] != my_data:
 			list_without_me.append(player)
 			
-	Player_cards.get_player_list(list_without_me)
+	Player_cards.set_player_data(list_without_me)
 
 
 
@@ -86,6 +90,7 @@ func effect_change(my_data):
 	player_list_copy = player_list
 
 func waiting_loop():
+	return
 	waiting_num += 1
 	var num = 0
 	await get_tree().create_timer(randi()%5).timeout 
@@ -108,22 +113,24 @@ func property_update(players):
 
 func get_my_data():
 	for player in player_list:
-		if player.Player_name == my_player_name:
+		if player.player_name == my_player_name:
 			return player
 
-func start_loop(list_of_players):
+func start_loop(host):
+	#await get_tree().create_timer(5).timeout 
+	if host:
+		player_list = All_players.create_players(NakamaManager.display_names.size())
 	
-	player_list = list_of_players
+	my_player_name = NakamaManager.display_names[NakamaManager.my_session_id] 
 	player_list = property_update(player_list)
-	var counter = 1
+	player_list_copy = player_list
+	var counter = 0
 	var my_data = get_my_data()
-	for player in player_list:
-		if player.Player_name == my_player_name:
-			my_data.append(player)
 	
-	while true:
+	
+	while game_is_running:
 		counter += 1
-		nights(counter,my_data)
+		await nights(counter,my_data)
 
 func nights(counter,my_data):
 	set_cards_without_me(my_data)
@@ -131,7 +138,7 @@ func nights(counter,my_data):
 	if counter == 1:
 		
 		if my_data.character_id == 01 and my_data.dead == false: # child 1 Night
-			player_list = character.switch_child(player_list, my_data)
+			player_list = await character.switch_child(player_list, my_data)
 		effect_change(my_data)
 		waiting_loop()
 		
@@ -140,7 +147,7 @@ func nights(counter,my_data):
 		waiting_loop()
 		
 		if my_data.character_id == 04 and my_data.dead == false: # Armore 1 1 Night
-			player_list = character.village_armore(player_list, my_data)
+			player_list = await character.village_armore(player_list, my_data)
 		effect_change(my_data)
 		waiting_loop()
 		
@@ -148,11 +155,11 @@ func nights(counter,my_data):
 		waiting_loop()
 		
 	if my_data.character_id == 06 and my_data.dead == false: # Fremdgeherin
-		player_list = character.village_fremdgeherin(player_list, my_data)
+		player_list = await character.village_fremdgeherin(player_list, my_data)
 	waiting_loop()
 	
 	if my_data.character_id == 07 and my_data.dead == false: # Angle
-		player_list = character.village_angel(player_list, my_data)
+		player_list = await character.village_angel(player_list, my_data)
 	effect_change(my_data)
 	waiting_loop()
 	
@@ -161,23 +168,23 @@ func nights(counter,my_data):
 	waiting_loop()
 	
 	if my_data.dead == false and (my_data.character_id == 09 or my_data.character_id == 10 or my_data.character_id == 11 or my_data.character_id == 12 or my_data.infected):
-		player_list = character.werewolfs(player_list, my_data)
+		player_list = await character.werewolfs(player_list, my_data)
 	waiting_loop()
 	
 	if counter == 1:
 		if my_data.character_id == 10 and my_data.dead == false: # Werwölfe old
-			player_list = character.werewolf_old_wolf(player_list, my_data)
+			player_list = await character.werewolf_old_wolf(player_list, my_data)
 	effect_change(my_data)
 	waiting_loop()
 	
 	if counter == 1:
 		if my_data.character_id == 11 and my_data.dead == false: # big bad
-			player_list = character.werewolf_big_bad_wolf(player_list, my_data)
+			player_list = await character.werewolf_big_bad_wolf(player_list, my_data)
 	waiting_loop()
 	
 	if counter % 2:
 		if my_data.character_id == 12 and my_data.dead == false: # White wolf
-			player_list = character.single_white_wolf(player_list, my_data)
+			player_list = await character.single_white_wolf(player_list, my_data)
 	waiting_loop()
 	
 	if my_data.character_id == 13 and my_data.dead == false: # Witch
@@ -185,20 +192,20 @@ func nights(counter,my_data):
 	waiting_loop()
 	
 	if my_data.character_id == 15 and my_data.dead == false: # flute Player 
-		player_list = character.single_flute_player(player_list, my_data)
+		player_list = await character.single_flute_player(player_list, my_data)
 	effect_change(my_data)
 	waiting_loop()
 	
-	var encanted_player = Kontroll.encanted(player_list)
+	Kontroll.enchanted(player_list)
 	waiting_loop()
 	
-	day(my_data)
+	await day(my_data)
 
 
 func day(my_data):
 	
 	
-	Kontroll.victory(player_list)
+	game_is_running = Kontroll.victory(player_list)
 	
 	#player_list = Kontroll.bear_neighbars(player_list)
 	player_list = Kontroll.knight(player_list)
@@ -209,7 +216,7 @@ func day(my_data):
 	Kontroll.victory(player_list)
 	
 	if my_data.character_id == 20 and my_data.dead: # Hunter 
-		player_list = character.village_hunter(player_list, my_data)
+		player_list = await character.village_hunter(player_list, my_data)
 	waiting_loop()
 	
 	if my_data.character_id == 19 and my_data.dead and first_life:
@@ -223,15 +230,15 @@ func day(my_data):
 	player_list = Kontroll.in_love_dead(player_list)
 	Kontroll.dead_players(player_list, my_data)
 	
-	player_list = character.mayor(player_list, my_data)					# Mayor Voting 
+	player_list = await character.mayor(player_list, my_data)					# Mayor Voting 
 	effect_change(my_data)
 	waiting_loop()
 	
-	player_list = character.voting(player_list, my_data)							# Normal Voting 
+	player_list = await character.voting(player_list, my_data)							# Normal Voting 
 	waiting_loop()
 	
-	player_list = character.mayor(player_list, my_data)					# Mayor Voting 
+	player_list = await character.mayor(player_list, my_data)					# Mayor Voting 
 	effect_change(my_data)
 	waiting_loop()
 	
-	Kontroll.victory(player_list)
+	game_is_running = Kontroll.victory(player_list)

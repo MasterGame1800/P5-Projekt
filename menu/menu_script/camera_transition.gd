@@ -1,18 +1,19 @@
 """
-This script extends the Node3D class and manages camera transitions with blending effects.
+This script manages camera transitions in the game.
+It handles smooth blending between cameras and updates the session GUI visibility.
 
-Variables:
+Classes and Variables:
 - current_camera: The currently active camera.
 - target_camera: The camera to transition to.
 - blend_time: Duration of the camera blend.
-- blend_timer: Timer for the blending process.
-- is_blending: Boolean indicating if a blend is in progress.
+- blend_timer: Timer for the blend process.
+- is_blending: Boolean indicating whether a blend is in progress.
 - blend_camera: The camera used for blending.
-- session_gui: The GUI displayed during the session.
+- session_gui: The GUI displayed during a session.
 
 Functions:
-- start_camera_blend: Initiates a camera blend from one camera to another.
-- _process: Updates the blending process each frame.
+- start_camera_blend: Starts a smooth transition between two cameras.
+- _process: Updates the camera blend process each frame.
 """
 
 extends Node3D

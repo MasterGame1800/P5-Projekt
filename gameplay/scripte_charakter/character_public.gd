@@ -4,7 +4,17 @@ var character = preload("res://gameplay/scripte_charakter/player_properties.gd")
 
 """
 This script manages public actions and statuses for characters in the game.
-Each function sets or modifies a specific public property or action.
+
+Functions:
+    public_vote(): Allows all living players to cast a vote during the day.
+    public_dead(): Sets the character's status to dead.
+    public_infected(): Sets the character's status to infected by werewolves.
+    public_entchanted(): Sets the character's status to enchanted by the flute player.
+    public_in_love(): Sets the character's status to in love.
+    public_idol(): Sets the character's status to idol.
+    public_mayor(): Sets the character's status to mayor.
+    public_sleepover(): Sets the character's status to sleepover.
+    public_guard(): Sets the character's status to guarded by the angel.
 """
 
 """

@@ -1,13 +1,14 @@
 """
-This script extends the Control class and manages constant GUI elements and their interactions.
+This script manages the constant GUI elements in the game.
+It handles button interactions for settings, explanations, and navigation.
 
-Variables:
+Classes and Variables:
 - main_node: The parent node of the GUI.
 
 Functions:
 - _on_button_settings_pressed: Placeholder for settings button functionality.
-- _on_button_explanation_pressed: Hides the current GUI and shows the legend.
-- _on_button_back_pressed: Handles back button functionality, including quitting the game or leaving a match.
+- _on_button_explanation_pressed: Navigates to the legend menu when the explanation button is pressed.
+- _on_button_back_pressed: Handles back button functionality, including quitting the game or switching cameras.
 """
 
 extends Control

@@ -1,4 +1,4 @@
-[gd_scene load_steps=264 format=4 uid="uid://dron6q878hf4v"]
+[gd_scene load_steps=268 format=4 uid="uid://dron6q878hf4v"]
 
 [ext_resource type="Texture2D" uid="uid://dnq4fh8xx8xoa" path="res://menu/menu_scene_3d/werwolf_szene_Mountain.png" id="1_1ecmj"]
 [ext_resource type="Texture2D" uid="uid://dqo3llu3har1a" path="res://menu/menu_scene_3d/werwolf_szene_Plains.png" id="2_7k314"]
@@ -15,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://dxp6b5ot76b8s" path="res://assets/Icons/Setting_Wheel.png" id="9_hmmfw"]
 [ext_resource type="Texture2D" uid="uid://b4vfx86pkt776" path="res://assets/Icons/Explanation_Book.png" id="10_bbpwr"]
 [ext_resource type="FontFile" uid="uid://bmqm8gkg74o3a" path="res://menu/themes/BubblegumSans-Regular.ttf" id="15_fdbvy"]
+[ext_resource type="Script" uid="uid://bibh31ipnhng4" path="res://gameplay/scripte_ablauf/Spielablauf.gd" id="16_a6qcc"]
+[ext_resource type="Script" uid="uid://b85k41ogyvl56" path="res://gameplay/scripte_ablauf/voting_besser.gd" id="17_6p3ef"]
+[ext_resource type="Script" uid="uid://1syg4h5srptl" path="res://gameplay/scripte_ablauf/Kontroll_abfragen.gd" id="18_2ch1k"]
+[ext_resource type="PackedScene" uid="uid://ciy1lbtx65o54" path="res://menu/menu_scene/Legende.tscn" id="19_yontj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4niow"]
 resource_name = "Green.002"
@@ -6509,6 +6513,25 @@ vertical_alignment = 1
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="Node" type="Node" parent="."]
+script = ExtResource("16_a6qcc")
+
+[node name="VotingGUI" type="Control" parent="Node"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("17_6p3ef")
+
+[node name="Node2" type="Node" parent="." node_paths=PackedStringArray("LabelVictory", "Labeldead")]
+script = ExtResource("18_2ch1k")
+LabelVictory = NodePath("../VictoryLabel")
+Labeldead = NodePath("../DeadLabel")
+
+[node name="Legende" parent="." instance=ExtResource("19_yontj")]
+visible = false
+
 [connection signal="mouse_entered" from="Cards/OwnCard/CardRect" to="Cards/OwnCard" method="_on_texture_rect_mouse_entered"]
 [connection signal="mouse_exited" from="Cards/OwnCard/CardRect" to="Cards/OwnCard" method="_on_texture_rect_mouse_exited"]
 [connection signal="pressed" from="ConstantGUI/Button Settings" to="ConstantGUI" method="_on_button_settings_pressed"]
+[connection signal="pressed" from="ConstantGUI/Button Explanation" to="ConstantGUI" method="_on_button_explanation_pressed"]

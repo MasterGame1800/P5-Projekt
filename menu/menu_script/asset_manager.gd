@@ -1,13 +1,14 @@
 """
-This script extends the Node class and manages the loading of textures for roles and statuses.
+This script manages asset loading for roles and statuses in the game.
+It provides functions to load textures for cards and statuses.
 
-Variables:
-- role_paths: Dictionary mapping role IDs to their respective image paths.
-- status_path: Dictionary mapping status names to their respective image paths.
+Classes and Variables:
+- role_paths: Dictionary mapping role IDs to card image paths.
+- status_path: Dictionary mapping status names to image paths.
 
 Functions:
-- load_role_texture: Loads and returns the texture for a given role ID.
-- load_status_texture: Loads and returns the texture for a given status name.
+- load_role_texture: Loads the texture for a given role ID.
+- load_status_texture: Loads the texture for a given status name.
 """
 
 extends Node

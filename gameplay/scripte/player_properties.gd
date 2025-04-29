@@ -1,28 +1,3 @@
-"""
-This script defines the `Player` class and functions for creating and managing players in the game.
-
-Classes and Variables:
-- `Player`: Represents a player in the game with various attributes such as name, character ID, and status effects.
-  - Attributes include:
-    - `player_name`: The name of the player.
-    - `player_num`: The player's number.
-    - `character_id`: The ID representing the player's character.
-    - `voting_num`: The number of votes the player has received.
-    - `dead`: Whether the player is dead.
-    - `enchanted`: Whether the player is enchanted.
-    - `in_love`: Whether the player is in love.
-    - `idol`: Whether the player is the idol.
-    - `mayor`: Whether the player is the mayor.
-    - `infected`: Whether the player is infected.
-    - `sleepover`: Whether the player is sleeping over at another player's place.
-    - `guard`: Whether the player is being guarded.
-
-Functions:
-- `_init(name: String)`: Initializes a new player with default attributes.
-- `create_players(num: int) -> Array`: Creates a list of players with random character assignments.
-- `character_list(num)`: Generates a list of characters to be assigned to players.
-"""
-
 extends Node
 
 class Player:
@@ -63,7 +38,7 @@ func create_players(num: int) -> Array:
 	for i in range(num):
 		random_index = randi() % use_character.size()
 
-		var player = Player.new(NakamaManager.display_names.values()[i])
+		var player = Player.new(NakamaManager.display_names.values()[i])#"player "+str(i)
 		player.player_num = i
 		player.character_id = use_character.pop_at(random_index)
 		player_list.append(player)

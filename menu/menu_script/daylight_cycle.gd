@@ -1,36 +1,27 @@
-extends DirectionalLight3D
-
 """
-This script extends the DirectionalLight3D class and manages the day-night cycle in the game.
+This script manages the daylight cycle in the game.
+It transitions between day and night states, updating lighting and sky properties.
 
-Variables:
-- max_light_energy: Maximum light energy during the day.
-- min_light_energy: Minimum light energy during the night.
-- light_color_day: Light color during the day.
-- light_color_night: Light color during the night.
-- ambient_color_day: Ambient light color during the day.
-- ambient_color_night: Ambient light color during the night.
-- transition_duration: Duration of the transition between day and night.
-- world_environment: The world environment node.
-- sky_material: Shader material for the sky.
-- sky_top_color_day: Top sky color during the day.
-- sky_top_color_night: Top sky color during the night.
-- sky_horizon_color_day: Horizon sky color during the day.
-- sky_horizon_color_night: Horizon sky color during the night.
-- sun_color_day: Sun color during the day.
-- sun_color_night: Sun color during the night.
-- sun_size_day: Sun size during the day.
-- sun_size_night: Sun size during the night.
-- is_day: Boolean indicating whether it is currently day.
+Classes and Variables:
+- max_light_energy, min_light_energy: Maximum and minimum light energy values.
+- light_color_day, light_color_night: Colors for day and night lighting.
+- ambient_color_day, ambient_color_night: Ambient light colors for day and night.
+- transition_duration: Duration of the day-night transition.
+- world_environment: The WorldEnvironment node to update ambient light.
+- sky_material: ShaderMaterial for the sky.
+- sky_top_color_day, sky_top_color_night: Top sky colors for day and night.
+- sky_horizon_color_day, sky_horizon_color_night: Horizon sky colors for day and night.
+- sun_color_day, sun_color_night: Sun colors for day and night.
+- sun_size_day, sun_size_night: Sun sizes for day and night.
+- is_day: Boolean indicating the current state (day or night).
 
 Functions:
-- toggle_daynight: Toggles between day and night.
-- set_sky_top_color: Sets the top sky color.
-- set_sky_horizon_color: Sets the horizon sky color.
-- set_sun_color: Sets the sun color.
-- set_sun_size: Sets the sun size.
-- _ready: Initializes the light and ambient colors for the day.
+- toggle_daynight: Toggles between day and night states with smooth transitions.
+- set_sky_top_color, set_sky_horizon_color, set_sun_color, set_sun_size: Helper functions to update sky properties.
+- _ready: Initializes the lighting and sky properties to day state.
 """
+
+extends DirectionalLight3D
 
 @export var max_light_energy: float = 1.5
 @export var min_light_energy: float = 0.1

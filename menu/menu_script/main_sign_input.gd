@@ -1,21 +1,45 @@
-"""
-This script extends the Area3D class and forwards input events to a Control node used as a texture.
+extends Area3D
 
-Variables:
-- viewport: The SubViewport containing the UI.
-- ui_control: The Control node receiving the forwarded inputs.
-- is_ui_focused: Boolean indicating if the UI is focused.
+"""
+This script handles input forwarding for a Control node used as a texture in a SubViewport.
+It ensures that mouse and touch inputs are correctly forwarded to the Control node,
+allowing interaction with UI elements like LineEdit nodes.
+
+Classes and Variables:
+- viewport: The SubViewport containing the Control node.
+- ui_control: The Control node used as a texture.
+- is_ui_focused: Tracks whether the UI is currently focused.
 - focused_control: The currently focused Control node.
 
 Functions:
-- _ready: Connects the input event signal and enables input processing.
-- _on_input_event: Handles input events and forwards them to the UI.
-- _input: Forwards key input events to the UI when focused.
-- _on_focus_exited: Resets the focus state when the UI loses focus.
-- find_control_at_position: Finds the Control node at a given position.
+- _ready: Connects input events and enables input processing.
+- _on_input_event: Handles mouse and touch input events, forwarding them to the Control node.
+- _input: Forwards keyboard input to the Control node when it is focused.
+- _on_focus_exited: Resets focus state when the Control node loses focus.
+- find_control_at_position: Recursively finds the Control node at a given position.
 """
 
-extends Area3D
+################################################################################
+# Disclaimer: Browsing the Web for this has only resulted in outdated Projects 
+# or others only written in C++ and not fitting for this specifically.
+# Therefore I have used ChatGPT with Reasoning and Web-Search enabled to help 
+# generate this code.
+# --------- Prompt 1:
+# In a Godot 4 Project i have a sign MeshInstance3D with a complex mesh where
+# only one materia uses a Control node as a texture. i want to forward the
+# necessary Inputs to the Control node. Generate a code based on this Structure
+# Node3D
+# - SubViewport
+# -- Control
+# 
+# - MainSign
+# -- Area3D
+# --- CollisionShape3D
+#
+# --------- Prompt 2:
+# The provided Code doen't work for LineEdit Nodes. Modify it to work for that
+# aswell by forwarding the Inputs accordingly
+################################################################################
 
 @export var viewport: SubViewport
 @export var ui_control: Control

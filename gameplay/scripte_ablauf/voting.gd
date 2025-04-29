@@ -1,35 +1,37 @@
 """
-This script handles the voting process in the game. It creates buttons for players to vote, manages the voting logic, and updates player properties based on the votes.
+This script implements a basic voting system for a multiplayer game.
 
 Classes and Variables:
-- button_count: Number of buttons created for voting.
-- radius_x, radius_y: Coordinates for button placement in an oval shape.
-- button_size: Size of the voting buttons.
-- selected_button, selected_button_index: Tracks the currently selected button and its index.
+- button_count: Number of voting buttons.
+- radius_x, radius_y: Coordinates for button placement.
+- button_size: Size of voting buttons.
+- selected_button: Currently selected button.
+- selected_button_index: Index of the selected button.
 - skip_button: Button to skip voting.
-- voting_finished: Boolean to track if voting is completed.
-- players: Array of players participating in the voting.
-- mayor: Boolean indicating if the current player is the mayor.
-- time: Voting duration.
-- types: String for additional voting types.
-- voting_timer: Timer to manage voting timeout.
+- voting_finished: Boolean to track voting completion.
+- players: List of all players.
+- mayor: Boolean to track if the current player is the mayor.
+- time: Voting time limit.
+- types: Type of voting.
 
 Functions:
-- _ready(): Initializes the voting timer and connects signals.
-- start_voting(): Starts the voting process, resets variables, and creates buttons.
-- create_oval_buttons(): Creates voting buttons in an oval layout.
-- create_confirm_button(): Creates a confirm button for voting.
-- create_skip_button(): Creates a skip button for voting.
-- if_change(): Checks if the player list has changed.
-- _on_button_pressed(): Handles button press events and updates player votes.
-- update_local_players(): Updates the local player list.
-- _on_button_hover_entered(): Handles hover enter events for buttons.
-- _on_button_hover_exited(): Handles hover exit events for buttons.
-- _on_confirm_pressed(): Handles the confirm button press event.
-- _on_voting_timeout(): Handles voting timeout and finalizes the voting process.
+- _ready(): Initializes the voting system.
+- start_voting(all_players, my_mayor, voting_time): Starts the voting process.
+- create_oval_buttons(count): Creates voting buttons in an oval layout.
+- create_confirm_button(): Creates a confirm button.
+- create_skip_button(): Creates a skip button.
+- if_change(player_list_copy): Checks if the player list has changed.
+- _on_button_pressed(button, index): Handles button press events.
+- update_local_players(new_players): Updates the local player list.
+- _on_button_hover_entered(button): Handles hover enter events.
+- _on_button_hover_exited(button): Handles hover exit events.
+- _on_confirm_pressed(): Handles confirm button press.
+- _on_voting_timeout(): Handles voting timeout.
 """
 
 extends Control
+
+signal voting_done
 
 var button_count: int = 0
 var radius_x: float = -450.0
@@ -46,49 +48,59 @@ var mayor : bool = false
 var time : int = 0
 var types : String = ""
 
-@onready var voting_timer: Timer = Timer.new()
+#@onready var voting_timer: Timer = Timer.new()
 
 func _ready():
-	NakamaManager.updated_players_properties.connect(update_local_players(players.))
-	add_child(voting_timer)
-	voting_timer.one_shot = true
-	voting_timer.connect("timeout", Callable(self, "_on_voting_timeout"))
+	NakamaManager.updated_players_properties.connect(update_local_players)
+	#add_child(voting_timer)
+	#voting_timer.one_shot = true
+	#voting_timer.connect("timeout", Callable(self, "_on_voting_timeout"))
 	
-	$VotingGUI.visible = false
+	visible = false
 
 func start_voting(all_players, my_mayor, voting_time):
-	
-	$VotingGUI.visible = true
+	print("ich bin unsichtbar")
+	visible = true
+	print("ich bin sichtbar")
 	# Alles zurücksetzen
 	voting_finished = false
 	selected_button = null
 	selected_button_index = -1
 	button_count = 0
 	players.clear()
-
+	print("ich bin zurückgesetzt")
 	players = all_players
 	button_count = players.size()
 	mayor = my_mayor
 	time = voting_time
-	
-	voting_timer.wait_time = time
-	voting_timer.start()
+	print("ich bin gesetzt")
+	#voting_timer.wait_time = time
+	#voting_timer.start()
 	
 	create_oval_buttons(button_count)
 	create_confirm_button()
 	create_skip_button()
 	
-	$VotingGUI.visible = false
-	if voting_finished:
-		return players
+	
+	await voting_done
+
+	print("ich bin kake")
+
+	visible = false
+	print("ich brauche kein return")
+	return players
+
+	
 
 func create_oval_buttons(count: int):
+	
+	print("hallo ich bin oval")
 	var center = get_size() / 2
 	var angle_step = TAU / count
 
 	for i in range(count):
 		var button = Button.new()
-		button.text = players[i].Player_name  
+		button.text = players[i].player_name  
 		button.size = button_size
 		button.custom_minimum_size = button_size
 
@@ -104,8 +116,10 @@ func create_oval_buttons(count: int):
 		button.connect("mouse_entered", _on_button_hover_entered.bind(button))
 		button.connect("mouse_exited", _on_button_hover_exited.bind(button))
 		add_child(button)
+		print("hallo ich bin oval")
 
 func create_confirm_button():
+	print("hallo ich bin confimrt")
 	var confirm_button = Button.new()
 	confirm_button.text = "Confirm"
 	confirm_button.size = Vector2(120, 50)
@@ -120,8 +134,10 @@ func create_confirm_button():
 
 	confirm_button.connect("pressed", _on_confirm_pressed)
 	add_child(confirm_button)
+	print("hallo ich bin confimrt")
 
 func create_skip_button():
+	print("hallo ich bin geskipt worden")
 	var center = get_size() / 2
 
 	skip_button = Button.new()
@@ -136,6 +152,7 @@ func create_skip_button():
 	skip_button.connect("mouse_exited", _on_button_hover_exited.bind(skip_button))
 
 	add_child(skip_button)
+	print("hallo ich bin geskipt worden")
 
 func if_change(player_list_copy):
 	if player_list_copy == players:
@@ -170,7 +187,7 @@ func _on_button_pressed(button: Button, index: int):
 			else:
 				players[player_use].voting_num += 1.0
 	
-	NakamaManager.update_players_propertys(players[player_use].voting_num)
+	NakamaManager.update_players_propertys(players)
 
 func update_local_players(new_players):
 	players = new_players
@@ -194,6 +211,7 @@ func _on_confirm_pressed():
 		return 
 	if selected_button:
 		voting_finished = true 
+		emit_signal("voting_done")
 		
 	if selected_button:
 		if selected_button_index == -1:

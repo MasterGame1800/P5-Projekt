@@ -1,8 +1,9 @@
 """
-This script extends the Control class and handles the back button functionality in the host menu.
+This script handles the behavior of the host menu.
+It provides functionality to navigate back to the main menu.
 
 Functions:
-- _on_button_back_pressed: Changes the current scene to the Main Menu 3D scene.
+- _on_button_back_pressed: Changes the scene to the main menu when the back button is pressed.
 """
 
 extends Control
